@@ -10,6 +10,7 @@
     "ignore": [
       "**/dist/*",
       "**/coverage/*",
+      "**/storybook-static/*",
       "**/.next/**",
       "**/public/**",
       ".turbo"
