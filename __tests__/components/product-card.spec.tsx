@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react'
+import { ComponentProps } from 'react'
 
 import '@testing-library/jest-dom'
 
@@ -6,7 +7,7 @@ import { ProductCard } from '~/components/product-card'
 
 describe('ProductCard', () => {
   it('render', () => {
-    const props: Parameters<typeof ProductCard>[0] = {
+    const props: ComponentProps<typeof ProductCard> = {
       id: 1,
       title: 'Gaming Laptop',
       description: 'High-performance laptop for gaming and development.',

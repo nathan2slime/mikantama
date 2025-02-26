@@ -17,10 +17,10 @@ export const ProductCard = ({ title, image, category, rating, ...props }: Props)
   }).format(props.price)
 
   return (
-    <Card className="w-fit cursor-pointer max-w-[256px] tracking-wide overflow-hidden">
+    <Card className="w-full cursor-pointer max-w-[256px] tracking-wide overflow-hidden">
       <CardHeader className="p-0 bg-white">
         <div className="relative aspect-square w-full h-auto p-3">
-          <Image src={image || '/icons/mg-holder.svg'} width={653} height={934} alt={title} className="w-full h-full" />
+          <Image src={image || '/icons/mg-holder.svg'} width={653} priority height={934} alt={title} className="w-full h-full" />
           {isHighRated && (
             <Badge className="absolute top-2 right-2">
               <Star className="h-3 w-3 fill-primary mr-1" />

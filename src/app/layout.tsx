@@ -5,6 +5,7 @@ import { AppLayout } from '~/components/providers/layout'
 import type { AppChildren } from '~/types'
 
 import '~/styles/globals.css'
+import { ThemeProvider } from '~/components/providers/theme'
 
 export const metadata: Metadata = {
   title: 'Mikantama',
@@ -20,7 +21,9 @@ const RootLayout = ({ children }: AppChildren) => {
   return (
     <html lang="en">
       <body className={base.className}>
-        <AppLayout>{children}</AppLayout>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <AppLayout>{children}</AppLayout>
+        </ThemeProvider>
       </body>
     </html>
   )

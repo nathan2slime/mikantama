@@ -14,6 +14,12 @@ const config: Config = {
   moduleNameMapper: {
     '^~/(.*)$': '<rootDir>/$1'
   },
+  globals: {
+    NODE_ENV: 'test',
+    'ts-jest': {
+      useESM: true
+    }
+  },
   testEnvironment: 'jsdom'
 }
 
