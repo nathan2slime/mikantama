@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Comic_Neue } from 'next/font/google'
 
+import { AppLayout } from '~/components/providers/layout'
 import { AppChildren } from '~/types'
 
 import '~/app/globals.css'
@@ -18,7 +19,9 @@ const base = Comic_Neue({
 const RootLayout = ({ children }: AppChildren) => {
   return (
     <html lang="en">
-      <body className={base.className}>{children}</body>
+      <body className={base.className}>
+        <AppLayout>{children}</AppLayout>
+      </body>
     </html>
   )
 }
