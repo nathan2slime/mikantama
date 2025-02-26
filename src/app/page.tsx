@@ -1,16 +1,24 @@
-import { ModeToggle } from '~/components/toggle-theme'
-import { Button } from '~/components/ui/button'
+import { HydrationBoundary, QueryClient, dehydrate } from '@tanstack/react-query'
 
-import { env } from '~/env.mjs'
+import { ProductList } from '~/components/product-list'
 
-const Home = () => {
+import { fetchAllProducts } from '~/api/queries/product.query'
+
+const Home = async () => {
+  const queryClient = new QueryClient()
+
+  await queryClient.fetchQuery({
+    queryKey: ['products'],
+    queryFn: fetchAllProducts
+  })
+
+  const dehydratedState = dehydrate(queryClient)
+
   return (
-    <div className="w-screen h-screen bg-background">
-      {env.NEXT_PUBLIC_API_URL}
-      <h1>Heading</h1>
-      <Button>Create</Button>
-      <ModeToggle />
-    </div>
+    <HydrationBoundary state={dehydratedState}>
+      <h1>Products</h1>
+      <ProductList />
+    </HydrationBoundary>
   )
 }
 
