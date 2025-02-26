@@ -2,9 +2,9 @@ import type { Metadata } from 'next'
 import { Comic_Neue } from 'next/font/google'
 
 import { AppLayout } from '~/components/providers/layout'
-import { AppChildren } from '~/types'
+import type { AppChildren } from '~/types'
 
-import '~/app/globals.css'
+import '~/styles/globals.css'
 
 export const metadata: Metadata = {
   title: 'Mikantama',

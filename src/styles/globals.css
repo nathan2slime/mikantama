@@ -44,32 +44,32 @@
   .dark {
     --background: 249 22% 12%;
     --foreground: 245 50% 91%;
-  
+
     --card: 247 23% 15%;
     --card-foreground: 245 50% 91%;
-  
+
     --popover: 248 25% 18%;
     --popover-foreground: 245 50% 91%;
-  
+
     --primary: 267 57% 78%;
     --primary-foreground: 249 22% 12%;
-  
+
     --secondary: 248 15% 61%;
     --secondary-foreground: 249 22% 12%;
-  
-    --muted: 249 12% 47%;
+
+    --muted: 249 19% 65%;
     --muted-foreground: 249 22% 12%;
-  
+
     --accent: 189 43% 73%;
     --accent-foreground: 249 22% 12%;
-  
+
     --destructive: 343 76% 68%;
     --destructive-foreground: 249 22% 12%;
-  
+
     --border: 244 18% 15%;
     --input: 249 15% 28%;
     --ring: 248 13% 36%;
-  
+
     --chart-1: 35 88% 72%;
     --chart-2: 197 49% 38%;
     --chart-3: 189 43% 73%;
