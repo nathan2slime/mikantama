@@ -22,6 +22,14 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      - name: Cache Node.js modules
+        uses: actions/cache@v3
+        with:
+          path: $HOME/.pnpm-store
+          key: ${{ runner.os }}-pnpm-${{ matrix.node-version }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-
+
       - name: Install dependencies
         run: pnpm install
 
@@ -45,7 +53,7 @@ jobs:
       - name: Cache Node.js modules
         uses: actions/cache@v3
         with:
-          path: ~/.pnpm-store
+          path: $HOME/.pnpm-store
           key: ${{ runner.os }}-pnpm-${{ matrix.node-version }}
           restore-keys: |
             ${{ runner.os }}-pnpm-
