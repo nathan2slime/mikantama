@@ -16,6 +16,7 @@ const Home = async () => {
 
   return (
     <HydrationBoundary state={dehydratedState}>
+      <h1>Products</h1>
       <ProductList />
     </HydrationBoundary>
   )
