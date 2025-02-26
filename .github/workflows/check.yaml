@@ -21,6 +21,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+          cache: 'pnpm'
 
       - name: Install dependencies
         run: pnpm install
@@ -41,17 +42,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-
-      - name: Cache Node.js modules
-        uses: actions/cache@v3
-        with:
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-pnpm-${{ matrix.node-version }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-
-
+          cache: 'pnpm'
       - name: Install dependencies
         run: pnpm install
 
       - name: Build
         run: pnpm build
+
+      - name: Storybook
+        run: pnpm build:storybook
