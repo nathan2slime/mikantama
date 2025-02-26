@@ -9,6 +9,7 @@
 # next.js
 /.next/
 /out/
+/storybook-static/
 
 # production
 /build
@@ -22,7 +23,9 @@
 .pnpm-debug.log*
 
 # env files
-.env*
+.env
+.env.production
+.env.local
 
 # vercel
 .vercel
