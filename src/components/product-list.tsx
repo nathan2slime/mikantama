@@ -6,17 +6,12 @@ import { fetchAllProducts } from '~/api/queries/product.query'
 import { ProductCard } from '~/components/product-card'
 
 export const ProductList = () => {
-  const { data = [] } = useQuery({
-    queryKey: ['products'],
-    queryFn: fetchAllProducts
-  })
+  const { data = [] } = useQuery(fetchAllProducts)
 
   const products = data.sort((prev, product) => product.rating.rate - prev.rating.rate)
 
-  const _categories = Array.from(new Set(products.map(product => product.category)))
-
   return (
-    <div className="flex flex-wrap px-3 py-5 gap-3 justify-center w-full">
+    <div className="flex flex-wrap px-3 py-7 gap-4 justify-center w-full max-w-7xl mx-auto">
       {products.map(product => (
         <ProductCard key={product.id} {...product} />
       ))}

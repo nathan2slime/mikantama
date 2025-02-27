@@ -1,9 +1,13 @@
 import { proxy, subscribe } from 'valtio'
 import { getStorage, setStorage } from '~/lib/utils'
 
-type State = {}
+type State = {
+  categories: string[]
+}
 
-const INITIAL: State = {}
+const INITIAL: State = {
+  categories: []
+}
 
 export const storageKey = '@mikan/app'
 
