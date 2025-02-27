@@ -19,8 +19,8 @@ export const ProductCard = ({ title, image, category, rating, ...props }: Props)
   return (
     <Card className="w-full cursor-pointer max-w-[256px] tracking-wide overflow-hidden">
       <CardHeader className="p-0 bg-white">
-        <div className="relative aspect-square w-auto h-fit p-3">
-          <Image src={image || '/icons/mg-holder.svg'} width={653} priority height={934} alt={title} className="w-auto h-[240px] object-cover" />
+        <div className="relative aspect-square w-auto flex h-fit p-3">
+          <Image src={image || '/icons/mg-holder.svg'} width={653} priority height={934} alt={title} className="w-auto mx-auto h-[240px] object-cover" />
           {isHighRated && (
             <Badge className="absolute top-2 right-2">
               <Star className="h-3 w-3 fill-primary mr-1" />

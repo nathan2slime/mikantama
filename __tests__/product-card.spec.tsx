@@ -1,8 +1,6 @@
 import { render } from '@testing-library/react'
 import { ComponentProps } from 'react'
 
-import '@testing-library/jest-dom'
-
 import { ProductCard } from '~/components/product-card'
 
 describe('ProductCard', () => {

@@ -9,10 +9,11 @@ const config: Config = {
   clearMocks: true,
   collectCoverage: true,
   coverageDirectory: 'coverage',
+  testMatch: ['**/*.spec.[jt]s?(x)'],
   coverageProvider: 'v8',
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   moduleNameMapper: {
-    '^~/(.*)$': '<rootDir>/$1'
+    '^~/(.*)$': '<rootDir>/src/$1'
   },
   testEnvironment: 'jsdom'
 }
