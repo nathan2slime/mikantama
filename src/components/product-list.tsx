@@ -13,6 +13,8 @@ export const ProductList = () => {
 
   const products = data.sort((prev, product) => product.rating.rate - prev.rating.rate)
 
+  const _categories = Array.from(new Set(products.map(product => product.category)))
+
   return (
     <div className="flex flex-wrap px-3 py-5 gap-3 justify-center w-full">
       {products.map(product => (

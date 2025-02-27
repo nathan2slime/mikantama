@@ -4,7 +4,11 @@ const nextConfig: NextConfig = {
   reactStrictMode: false,
   output: 'standalone',
   images: {
-    domains: ['fakestoreapi.com']
+    remotePatterns: [
+      {
+        hostname: 'fakestoreapi.com'
+      }
+    ]
   }
 }
 

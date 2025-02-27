@@ -37,6 +37,7 @@
       },
       "a11y": {
         "noSvgWithoutTitle": "off",
+        "useSemanticElements": "off",
         "useKeyWithClickEvents": "off"
       },
       "complexity": {
