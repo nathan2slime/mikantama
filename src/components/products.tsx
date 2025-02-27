@@ -5,13 +5,11 @@ import { ProductList } from '~/components/product-list'
 import { fetchAllProducts, filterProducts } from '~/api/queries/product.query'
 import { queryParamsProductSchema } from '~/lib/schemas/product.schema'
 
-export const dynamic = 'force-dynamic'
-
 type Props = {
-  searchParams: Promise<Partial<Record<string, string>>>
+  searchParams: Partial<Record<string, string>>
 }
 
-const Products = async ({ searchParams }: Props) => {
+export const Products = async ({ searchParams }: Props) => {
   const queryClient = new QueryClient()
 
   const queryParams = queryParamsProductSchema.safeParse(await searchParams)
@@ -30,5 +28,3 @@ const Products = async ({ searchParams }: Props) => {
     </HydrationBoundary>
   )
 }
-
-export default Products
