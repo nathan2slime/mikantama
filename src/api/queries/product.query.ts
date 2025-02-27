@@ -4,21 +4,28 @@ import { api } from '~/api'
 import { QueryParamsProductSchema } from '~/lib/schemas/product.schema'
 import { Product } from '~/types/product.types'
 
-export const fetchAllProducts = queryOptions({
-  queryKey: ['products'],
-  queryFn: async () => {
-    const { data } = await api.get<Product[]>('products')
+export const fetchAllProducts = (args: Partial<QueryParamsProductSchema>) =>
+  queryOptions({
+    queryKey: ['products', args.limit],
+    queryFn: async () => {
+      const { data } = await api.get<Product[]>('products', {
+        params: {
+          limit: args.limit || 10
+        }
+      })
 
-    return data
-  }
-})
+      return data
+    }
+  })
 
 export const filterProducts = (args: Partial<QueryParamsProductSchema>) =>
   queryOptions({
     queryKey: ['filter-products', args.category],
     queryFn: async () => {
       const { data } = await api.get<Product[]>(`products/category/${args.category}`, {
-        params: {}
+        params: {
+          limit: args.limit || 10
+        }
       })
 
       return data

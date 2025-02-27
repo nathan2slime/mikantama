@@ -1,31 +1,25 @@
 'use client'
 
 import { useQuery } from '@tanstack/react-query'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useSearchParams } from 'next/navigation'
 import { useState } from 'react'
 
 import { fetchAllCategories } from '~/api/queries/product.query'
 
 import { Combobox } from '~/components/combobox'
+import { useSearchProducts } from '~/hooks/use-search-products'
 
 export const FilterForm = () => {
   const searchParams = Object.fromEntries(useSearchParams().entries())
 
-  const [category, setCategory] = useState(searchParams.category || 'all')
-  const router = useRouter()
-
   const getCategories = useQuery(fetchAllCategories)
-
-  const onSearch = (args: Record<string, string>) => {
-    const searchParams = new URLSearchParams({ ...args })
-
-    router.push(`?${searchParams}`)
-  }
+  const [category, setCategory] = useState(searchParams.category)
+  const { onSearch } = useSearchProducts(searchParams)
 
   const categories = [
     {
       label: 'all',
-      value: 'all'
+      value: ''
     },
     ...(getCategories.data || []).map(category => ({ label: category, value: category }))
   ]
@@ -33,7 +27,7 @@ export const FilterForm = () => {
   const onChangeCategory = (newCategory: string) => {
     setCategory(newCategory)
 
-    onSearch({ category: newCategory === 'all' ? '' : newCategory })
+    onSearch({ category: newCategory })
   }
 
   return <Combobox data={categories} placeholder="Filter by category" value={String(category)} onChangeValue={onChangeCategory} />
