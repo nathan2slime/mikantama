@@ -35,7 +35,7 @@ export const Combobox = ({ data, placeholder, value, onChangeValue }: Props) => 
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
         <Command>
-          <CommandInput placeholder={placeholder} />
+          <CommandInput placeholder={placeholder} className="placeholder:text-foreground" />
           <CommandList>
             <CommandEmpty>No results found.</CommandEmpty>
             <CommandGroup>
