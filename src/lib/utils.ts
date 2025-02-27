@@ -9,7 +9,7 @@ export const setStorage = <T = object>(key: string, value: T) => {
   try {
     localStorage.setItem(key, JSON.stringify(value))
   } catch (e) {
-    console.log(e)
+    console.error(`Error saving to localStorage. Key: "${key}".`, e)
   }
 }
 
@@ -19,7 +19,7 @@ export const getStorage = <T = object>(key: string): T | null => {
   try {
     return JSON.parse(localStorage.getItem(key) || '') as T
   } catch (e) {
-    console.log(e)
+    console.error(`Error retrieving value from localStorage. Key: "${key}".`, e)
 
     return null
   }
