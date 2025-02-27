@@ -3,11 +3,11 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
+      args:
+        - NEXT_PUBLIC_API_URL=https://fakestoreapi.com
     restart: always
     ports:
       - '3000:3000'
-    env_file:
-      - ./.env.production
   storybook:
       build:
         context: .
