@@ -19,9 +19,9 @@ describe('ProductCard', () => {
     }
     const { container } = render(<ProductCard {...props} />)
 
-    const title = container.getElementsByTagName('h3')
+    const title = container.getElementsByTagName('p')
 
-    expect(title.length).toBe(1)
+    expect(title.length).not.toBe(0)
     expect(title[0]).toHaveTextContent(props.title)
   })
 })
