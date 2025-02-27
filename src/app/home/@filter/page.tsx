@@ -6,7 +6,7 @@ import { FilterForm } from '~/components/filter-form'
 const Filter = async () => {
   const queryClient = new QueryClient()
 
-  await queryClient.prefetchQuery(fetchAllCategories)
+  await queryClient.fetchQuery(fetchAllCategories)
 
   const dehydratedState = dehydrate(queryClient)
 
