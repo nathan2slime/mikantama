@@ -36,17 +36,20 @@ export const ProductList = ({ queryParams, isFiltered }: Props) => {
           products.map(product => <ProductCard key={product.id} {...product} />)
         )}
       </div>
-      <Button
-        className="w-fit mt-4"
-        variant="secondary"
-        disabled={products.length >= lastSize}
-        onClick={() => {
-          setLastSize(products.length)
-          onSearch({ limit: (limit + 10).toString() })
-        }}
-      >
-        Load more
-      </Button>
+
+      {products.length > 0 && (
+        <Button
+          className="w-fit mt-4"
+          variant="secondary"
+          disabled={products.length >= lastSize}
+          onClick={() => {
+            setLastSize(products.length)
+            onSearch({ limit: (limit + 10).toString() })
+          }}
+        >
+          Load more
+        </Button>
+      )}
     </div>
   )
 }
