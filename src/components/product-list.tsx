@@ -25,23 +25,26 @@ export const ProductList = ({ queryParams, isFiltered }: Props) => {
   const limit = Number.parseInt(searchParams.limit) || 10
   const { onSearch } = useSearchProducts(searchParams)
 
-  const products = (data || []).sort((prev, product) => product.rating.rate - prev.rating.rate)
+  const sortedProductsByPrice = searchParams.price ? data.sort((a, b) => (searchParams.price === 'desc' ? a.price - b.price : b.price - a.price)) : data
+
+  const products =
+    searchParams.price === 'featured' || searchParams.price === undefined ? data.sort((prev, product) => product.rating.rate - prev.rating.rate) : sortedProductsByPrice
 
   return (
     <div className="flex flex-col py-7 px-3 justify-center items-center w-full gap-3">
-      <div className="flex flex-wrap gap-4 justify-center w-full max-w-7xl mx-auto">
+      <div className="flex flex-wrap gap-4 justify-start w-full max-w-7xl mx-auto">
         {isFetching || isLoading ? (
           <ProductListSkeleton size={products.length === 0 ? 25 : products.length} />
         ) : (
-          products.map(product => <ProductCard key={product.id} {...product} />)
+          sortedProductsByPrice.map(product => <ProductCard key={product.id} {...product} />)
         )}
       </div>
 
-      {products.length > 0 && (
+      {lastSize < products.length && (
         <Button
-          className="w-fit mt-4"
+          className="w-full max-w-md rounded-2xl mt-4"
           variant="secondary"
-          disabled={products.length >= lastSize}
+          disabled={lastSize >= products.length}
           onClick={() => {
             setLastSize(products.length)
             onSearch({ limit: (limit + 10).toString() })

@@ -21,9 +21,6 @@ const base = Comic_Neue({
 const RootLayout = ({ children }: AppChildren) => {
   return (
     <html lang="en">
-      <head>
-        <script crossOrigin="anonymous" src="//unpkg.com/react-scan/dist/auto.global.js" />
-      </head>
       <body className={base.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <Providers>

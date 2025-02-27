@@ -12,7 +12,7 @@ const Filter = async () => {
 
   return (
     <div className="flex pt-7 px-4 items-center max-w-7xl mx-auto justify-between w-full">
-      <h1 className="text-2xl text-foreground font-semibold">Products</h1>
+      <h1 className="text-2xl text-foreground font-bold">Products</h1>
 
       <HydrationBoundary state={dehydratedState}>
         <FilterForm />
