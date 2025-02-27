@@ -17,10 +17,10 @@ export const ProductCard = ({ title, image, category, rating, ...props }: Props)
   }).format(props.price)
 
   return (
-    <Card className="w-full cursor-pointer max-w-[256px] tracking-wide overflow-hidden">
+    <Card className="w-full cursor-pointer max-w-[236px] tracking-wide overflow-hidden">
       <CardHeader className="p-0 bg-white">
-        <div className="relative aspect-square w-auto flex h-fit p-3">
-          <Image src={image || '/icons/mg-holder.svg'} width={653} priority height={934} alt={title} className="w-auto mx-auto h-[240px] object-cover" />
+        <div className="relative w-auto flex h-fit p-3">
+          <Image src={image || '/icons/mg-holder.svg'} width={653} priority height={934} alt={title} className="w-auto mx-auto h-[140px] object-contain" />
           {isHighRated && (
             <Badge className="absolute top-2 right-2">
               <Star className="h-3 w-3 fill-primary mr-1" />
@@ -30,7 +30,7 @@ export const ProductCard = ({ title, image, category, rating, ...props }: Props)
         </div>
       </CardHeader>
       <CardContent className="grid gap-2.5 p-4">
-        <h3 className="font-semibold text-xl truncate" title={title}>
+        <h3 className="font-semibold text-lg truncate" title={title}>
           {title}
         </h3>
         <Badge variant="secondary" className="w-fit">

@@ -10,6 +10,7 @@
     "commit": "git-cz",
     "lint": "biome check",
     "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
     "format": "biome format --write",
     "storybook": "storybook dev -p 6006",
     "build:storybook": "storybook build"
