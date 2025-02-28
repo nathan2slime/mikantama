@@ -88,7 +88,7 @@ export const NewProductForm = () => {
           name="description"
           render={({ field }) => (
             <FormItem>
-              <FormLabel id="bio">Bio</FormLabel>
+              <FormLabel id="description">Description</FormLabel>
               <FormControl>
                 <Textarea placeholder="Apple Vision Pro" className="resize-none" {...field} />
               </FormControl>
