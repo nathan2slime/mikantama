@@ -1,5 +1,4 @@
 import { ReactNode } from 'react'
-import { NewProductDialog } from '~/components/new-product-dialog'
 
 import { AppChildren } from '~/types'
 
@@ -11,8 +10,6 @@ type Props = AppChildren<{
 const HomeLayout = ({ children, filter, products }: Props) => {
   return (
     <div>
-      <NewProductDialog />
-
       {children}
       {filter}
       {products}
