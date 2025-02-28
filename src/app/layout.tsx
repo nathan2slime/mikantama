@@ -22,7 +22,7 @@ const RootLayout = ({ children }: AppChildren) => {
   return (
     <html lang="en">
       <body className={base.className}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <Providers>
             <AppLayout>{children}</AppLayout>
           </Providers>

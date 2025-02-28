@@ -52,7 +52,7 @@ export const NewProductForm = () => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(values => mutation.mutate(values))} className="space-y-4">
+      <form data-testid="form" onSubmit={form.handleSubmit(values => mutation.mutate(values))} className="space-y-4">
         <div className="flex flex-col md:flex-row justify-start gap-4 items-start">
           <FormField
             control={form.control}
