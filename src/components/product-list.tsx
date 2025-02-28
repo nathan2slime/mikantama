@@ -33,7 +33,7 @@ export const ProductList = ({ queryParams, isFiltered }: Props) => {
 
   return (
     <div className="flex flex-col py-7 px-3 justify-center items-center w-full gap-3">
-      <div className="flex flex-wrap gap-4 justify-start w-full max-w-7xl mx-auto">
+      <div className="flex justify-center flex-wrap gap-4 md:justify-start w-full max-w-7xl mx-auto">
         {isFetching || isLoading ? (
           <ProductListSkeleton size={products.length === 0 ? 25 : products.length} />
         ) : (

@@ -11,8 +11,8 @@ const Filter = async () => {
   const dehydratedState = dehydrate(queryClient)
 
   return (
-    <div className="flex pt-7 px-4 items-center max-w-7xl mx-auto justify-between w-full">
-      <h1 className="text-2xl text-foreground font-bold">Products</h1>
+    <div className="flex flex-col gap-2 sm:flex-row pt-7 px-4 items-start md:items-center max-w-7xl mx-auto justify-between w-full">
+      <h1 className="text-xl md:text-2xl text-foreground font-bold">Products</h1>
 
       <HydrationBoundary state={dehydratedState}>
         <FilterForm />
