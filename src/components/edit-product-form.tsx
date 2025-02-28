@@ -1,59 +1,55 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import dynamic from 'next/dynamic'
-import { useSearchParams } from 'next/navigation'
+import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
+import { useSnapshot } from 'valtio'
+import { editProductMutation } from '~/api/mutations/product.mutation'
 
-import { createProductMutation } from '~/api/mutations/product.mutation'
 import { Button } from '~/components/ui/button'
 import { DialogClose } from '~/components/ui/dialog'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '~/components/ui/form'
 import { Input } from '~/components/ui/input'
 import { Textarea } from '~/components/ui/textarea'
-import { NewProductSchema, newProductSchema } from '~/lib/schemas/product.schema'
+import { EditProductSchema, editProductSchema } from '~/lib/schemas/product.schema'
 import { dialogState } from '~/store/dialog.state'
-import { Product } from '~/types/product.types'
+import { productState } from '~/store/product.state'
 
 const Loading = dynamic(async () => (await import('~/components/loading')).Loading, { ssr: false })
 
-export const NewProductForm = () => {
-  const searchParams = useSearchParams()
-
+export const EditProductForm = () => {
+  const { editedProduct } = useSnapshot(productState)
   const queryClient = useQueryClient()
 
+  if (!editedProduct) return
+
   const mutation = useMutation({
-    mutationFn: createProductMutation,
-    mutationKey: ['create-product'],
+    mutationFn: editProductMutation,
     onSuccess: data => {
-      const limit = Number.parseInt(String(searchParams.get('limit')))
+      queryClient.setQueryData(['get-product', data.id.toString()], prev => prev && { ...prev, ...data })
 
-      // 10 represents the default limit of items per fetch
-      const newProduct: Product = { ...data, rating: { count: 1, rate: 1 } }
-      queryClient.setQueryData<Product[]>(['products', Number.isInteger(limit) ? limit : 10], (prev = []) => [newProduct, ...prev])
-
-      toast.success('New product created')
-      dialogState.isOpenNewProduct = false
+      toast.success('Product edited')
+      dialogState.isOpenEditProduct = false
+      form.reset()
     }
   })
 
-  const form = useForm<NewProductSchema>({
+  const form = useForm<EditProductSchema>({
     mode: 'all',
-    resolver: zodResolver(newProductSchema),
-    defaultValues: {
-      category: '',
-      description: '',
-      image: '',
-      price: 0,
-      title: ''
-    }
+    resolver: zodResolver(editProductSchema),
+    defaultValues: editedProduct
   })
+
+  useEffect(() => {
+    editedProduct && form.reset(editedProduct)
+  }, [editedProduct])
 
   const { isValid } = form.formState
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(values => mutation.mutate(values))} className="space-y-4">
+      <form onSubmit={form.handleSubmit(values => mutation.mutate({ id: editedProduct.id, data: values }))} className="space-y-4">
         <div className="flex flex-col md:flex-row justify-start gap-4 items-start">
           <FormField
             control={form.control}
@@ -114,6 +110,7 @@ export const NewProductForm = () => {
           <FormField
             control={form.control}
             name="category"
+            disabled
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormLabel id="category">Category</FormLabel>

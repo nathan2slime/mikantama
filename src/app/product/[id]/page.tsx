@@ -13,7 +13,6 @@ export const generateStaticParams = async () => {
 }
 
 export const revalidate = 10
-
 export const dynamicParams = true
 
 type Params = { id: string }
