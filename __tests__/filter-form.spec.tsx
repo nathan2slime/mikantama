@@ -22,6 +22,10 @@ describe('FilterForm', () => {
     mockUseSearchProducts.mockReturnValue({ onSearch: jest.fn() })
   })
 
+  afterEach(() => {
+    jest.restoreAllMocks()
+  })
+
   it('renders the component correctly', () => {
     render(<FilterForm />)
     expect(screen.getByText('Filter by category')).toBeInTheDocument()
@@ -35,6 +39,7 @@ describe('FilterForm', () => {
     render(<FilterForm />)
 
     const combobox = screen.getByLabelText('combobox')
+
     await waitFor(() => fireEvent.click(combobox))
     const item = screen.getByText('category')
     await waitFor(() => fireEvent.click(item))
