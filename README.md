@@ -24,10 +24,12 @@ git clone https://github.com/nathan2slime/mikantama.git
 
 ### Config
 
-Crie um arquivo `.env.local` e adicione as seguinte variáveis de ambiente. Use o arquivo `.env.example` como base.
+Use o arquivo `.env.example` como base e crie um arquivo `.env.local`, e nele adicione as seguintes variáveis de ambiente
+
 ```env
 NEXT_PUBLIC_API_URL="https://fakestoreapi.com"
 ```
+
 Use o comando abaixo para instalar as dependências
 ```
 pnpm install
@@ -54,7 +56,7 @@ O arquivo do projeto no Figma foi adicionado em [/docs/mikantama.fig](https://gi
 
 ### Deploy
 
-O projeto foi implamantado na _Vercel_, use os links abaixo
+O projeto foi implamantado na _Vercel_. Use os links abaixo
 
 - [Storybook](https://mikantama-story.vercel.app/)
 - [Next.js](https://mikantama.vercel.app/)
