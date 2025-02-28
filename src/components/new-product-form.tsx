@@ -7,7 +7,6 @@ import toast from 'react-hot-toast'
 
 import { createProductMutation } from '~/api/mutations/product.mutation'
 import { Button } from '~/components/ui/button'
-import { DialogClose } from '~/components/ui/dialog'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '~/components/ui/form'
 import { Input } from '~/components/ui/input'
 import { Textarea } from '~/components/ui/textarea'
@@ -62,7 +61,7 @@ export const NewProductForm = () => {
               <FormItem className="w-full">
                 <FormLabel id="title">Title</FormLabel>
                 <FormControl>
-                  <Input placeholder="Vision Pro" {...field} />
+                  <Input data-testid="field" placeholder="Vision Pro" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -76,7 +75,7 @@ export const NewProductForm = () => {
               <FormItem className="w-full">
                 <FormLabel id="price">Price</FormLabel>
                 <FormControl>
-                  <Input type="number" placeholder="24" {...field} />
+                  <Input type="number" data-testid="field" placeholder="24" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -90,7 +89,7 @@ export const NewProductForm = () => {
             <FormItem>
               <FormLabel id="description">Description</FormLabel>
               <FormControl>
-                <Textarea placeholder="Apple Vision Pro" className="min-h-24 resize-none" {...field} />
+                <Textarea data-testid="field" placeholder="Apple Vision Pro" className="min-h-24 resize-none" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -105,7 +104,7 @@ export const NewProductForm = () => {
               <FormItem className="w-full">
                 <FormLabel id="image">Image</FormLabel>
                 <FormControl>
-                  <Input placeholder="https://plus.unsplash.com/" {...field} />
+                  <Input data-testid="field" placeholder="https://plus.unsplash.com/" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -114,11 +113,12 @@ export const NewProductForm = () => {
           <FormField
             control={form.control}
             name="category"
+            data-testid="field"
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormLabel id="category">Category</FormLabel>
                 <FormControl>
-                  <Input placeholder="Tech" {...field} />
+                  <Input data-testid="field" placeholder="Tech" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -126,11 +126,16 @@ export const NewProductForm = () => {
           />
         </div>
         <div className="w-full justify-end flex items-center gap-2">
-          <DialogClose asChild>
-            <Button type="reset" variant="outline" className="font-semibold">
-              Cancel
-            </Button>
-          </DialogClose>
+          <Button
+            onClick={() => {
+              dialogState.isOpenNewProduct = false
+            }}
+            type="reset"
+            variant="outline"
+            className="font-semibold"
+          >
+            Cancel
+          </Button>
           <Button type="submit" className="font-semibold w-28" disabled={!isValid}>
             {mutation.isPending ? <Loading name="cardio" size="22" speed="2" /> : 'Save changes'}
           </Button>

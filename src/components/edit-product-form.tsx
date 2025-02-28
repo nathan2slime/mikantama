@@ -124,11 +124,11 @@ export const EditProductForm = () => {
         </div>
         <div className="w-full justify-end flex items-center gap-2">
           <DialogClose asChild>
-            <Button type="reset" variant="outline" className="font-semibold">
+            <Button type="reset" aria-label="reset" variant="outline" className="font-semibold">
               Cancel
             </Button>
           </DialogClose>
-          <Button type="submit" className="font-semibold w-28" disabled={!isValid}>
+          <Button type="submit" aria-label="save" className="font-semibold w-28" disabled={!isValid}>
             {mutation.isPending ? <Loading name="cardio" size="22" speed="2" /> : 'Save changes'}
           </Button>
         </div>
