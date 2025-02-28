@@ -38,11 +38,11 @@ export const FilterForm = () => {
   }
 
   return (
-    <div className="flex justify-start gap-1">
+    <div className="flex sm:max-w-[372px] w-full justify-start gap-3">
       <Combobox data={categories} placeholder="Filter by category" value={String(category)} onChangeValue={onChangeCategory} />
 
       <Select value={priceSort} onValueChange={onChangePriceSort}>
-        <SelectTrigger className="w-[180px]">
+        <SelectTrigger className="w-full">
           <SelectValue aria-label="order-by-price" placeholder="Sort by price" />
         </SelectTrigger>
         <SelectContent>
