@@ -35,7 +35,7 @@ export const ProductOverview = ({ id }: Props) => {
       </Link>
 
       <div className="w-full pt-3 flex gap-6 flex-col md:flex-row">
-        <div className="border-b md:border-r border-border bg-white dark:rounded-lg px-5 py-3 aspect-square flex w-full max-w-96">
+        <div className="border-b md:border-b-0 md:border-r border-border bg-white dark:rounded-lg px-5 py-3 aspect-square flex w-full max-w-96">
           <Image src={data.image} alt={data.title} width={653} priority height={934} className="object-contain w-full rounded-lg" />
         </div>
         <div>
