@@ -29,13 +29,13 @@ export const Combobox = ({ data, placeholder, value, onChangeValue }: Props) => 
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
         <Button variant="outline" aria-label="combobox" role="combobox" aria-expanded={open} className="w-full justify-between">
-          {selected ? selected.label : placeholder}
+          {selected ? selected.label : <span className="text-muted-foreground">{placeholder}</span>}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
         <Command>
-          <CommandInput placeholder={placeholder} className="placeholder:text-foreground" />
+          <CommandInput placeholder={placeholder} className="placeholder:text-muted-foreground" />
           <CommandList>
             <CommandEmpty>No results found.</CommandEmpty>
             <CommandGroup>

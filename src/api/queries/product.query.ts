@@ -8,7 +8,7 @@ export const fetchAllProducts = (args: Partial<QueryParamsProductSchema>) =>
   queryOptions({
     queryKey: ['products', args.limit],
     queryFn: async () => {
-      const { data } = await api.get<Product[]>('products', {
+      const { data } = await api.get<Product[]>('/products', {
         params: {
           limit: args.limit || 10
         }
@@ -18,11 +18,21 @@ export const fetchAllProducts = (args: Partial<QueryParamsProductSchema>) =>
     }
   })
 
+export const fetchProductById = (id: string) =>
+  queryOptions({
+    queryKey: ['get-product', id],
+    queryFn: async () => {
+      const { data } = await api.get<Product>(`/products/${id}`)
+
+      return data
+    }
+  })
+
 export const filterProducts = (args: Partial<QueryParamsProductSchema>) =>
   queryOptions({
     queryKey: ['filter-products', args.category],
     queryFn: async () => {
-      const { data } = await api.get<Product[]>(`products/category/${args.category}`, {
+      const { data } = await api.get<Product[]>(`/products/category/${args.category}`, {
         params: {
           limit: args.limit || 10
         }
@@ -35,7 +45,7 @@ export const filterProducts = (args: Partial<QueryParamsProductSchema>) =>
 export const fetchAllCategories = queryOptions({
   queryKey: ['all-categories'],
   queryFn: async () => {
-    const { data } = await api.get<string[]>('products/categories')
+    const { data } = await api.get<string[]>('/products/categories')
 
     return data
   }

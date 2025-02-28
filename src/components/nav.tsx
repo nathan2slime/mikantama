@@ -12,7 +12,7 @@ import { dialogState } from '~/store/dialog.state'
 export const Nav = () => {
   const { theme } = useTheme()
   return (
-    <div className="w-full right-1 z-10 border-b border-border h-16 px-4 flex justify-between items-center gap-2 bg-card/90 backdrop-blur-md sticky top-0">
+    <div className="w-full right-1 z-10 border-b border-border mx-auto max-w-7xl h-16 px-4 flex justify-between items-center gap-2 bg-card/80 backdrop-blur-md sticky top-0">
       <Link href="/home" aria-label="Go to Home">
         <Planet size={120} className="translate-y-3 -translate-x-6" color={theme === 'dark' ? '#fff' : '#e8e8e8'} />
       </Link>
