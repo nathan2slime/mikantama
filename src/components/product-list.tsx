@@ -1,6 +1,7 @@
 'use client'
 
 import { useQuery } from '@tanstack/react-query'
+import { ChevronDown } from 'lucide-react'
 import { useSearchParams } from 'next/navigation'
 import { useState } from 'react'
 
@@ -42,14 +43,15 @@ export const ProductList = ({ queryParams, isFiltered }: Props) => {
 
       {lastSize < products.length && (
         <Button
-          className="w-full max-w-md rounded-2xl mt-4"
-          variant="secondary"
+          className="w-fit rounded-2xl mt-4"
+          variant="outline"
           disabled={lastSize >= products.length}
           onClick={() => {
             setLastSize(products.length)
             onSearch({ limit: (limit + 10).toString() })
           }}
         >
+          <ChevronDown />
           Load more
         </Button>
       )}
