@@ -8,6 +8,12 @@ export const createProductMutation = async (payload: NewProductSchema) => {
   return data
 }
 
+export const deleteProductMutation = async (id: string) => {
+  const { data } = await api.delete<Product>(`/products/${id}`)
+
+  return data
+}
+
 type EditProductMutationArgs = {
   id: number
   data: EditProductSchema
