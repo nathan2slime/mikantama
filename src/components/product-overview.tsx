@@ -4,11 +4,14 @@ import { useQuery } from '@tanstack/react-query'
 import { ChevronLeft, Edit, Star, Trash } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useEffect } from 'react'
 
 import { fetchProductById } from '~/api/queries/product.query'
 import { Badge } from '~/components/ui/badge'
 import { Button } from '~/components/ui/button'
 import { cn } from '~/lib/utils'
+import { dialogState } from '~/store/dialog.state'
+import { productState } from '~/store/product.state'
 
 type Props = {
   id: string
@@ -25,6 +28,10 @@ export const ProductOverview = ({ id }: Props) => {
     style: 'currency',
     currency: 'USD'
   }).format(data.price)
+
+  useEffect(() => {
+    console.log(data)
+  }, [data])
 
   return (
     <div className="w-full pt-7 px-4 max-w-7xl mx-auto">
@@ -60,11 +67,18 @@ export const ProductOverview = ({ id }: Props) => {
           </div>
 
           <div className="bg-muted rounded-lg flex gap-2 mt-3 p-3 sm:max-w-xs w-full">
-            <Button className="font-semibold w-full">
+            <Button
+              size="sm"
+              onClick={() => {
+                productState.editedProduct = data
+                dialogState.isOpenEditProduct = true
+              }}
+              className="font-semibold w-full"
+            >
               <Edit />
               Edit
             </Button>
-            <Button variant="destructive" className="font-semibold w-full">
+            <Button size="sm" variant="destructive" className="font-semibold w-full">
               <Trash />
               Delete
             </Button>
