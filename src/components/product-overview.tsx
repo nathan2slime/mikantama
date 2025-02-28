@@ -30,7 +30,7 @@ export const ProductOverview = ({ id }: Props) => {
 
   return (
     <div className="w-full pt-7 px-4 max-w-7xl mx-auto">
-      <Link href="/home">
+      <Link aria-label="Back" href="/home">
         <Button size="icon" variant="outline">
           <ChevronLeft />
         </Button>
