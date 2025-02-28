@@ -4,7 +4,6 @@ import { useQuery } from '@tanstack/react-query'
 import { ChevronLeft, Edit, Star, Trash } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect } from 'react'
 
 import { fetchProductById } from '~/api/queries/product.query'
 import { Badge } from '~/components/ui/badge'
@@ -28,10 +27,6 @@ export const ProductOverview = ({ id }: Props) => {
     style: 'currency',
     currency: 'USD'
   }).format(data.price)
-
-  useEffect(() => {
-    console.log(data)
-  }, [data])
 
   return (
     <div className="w-full pt-7 px-4 max-w-7xl mx-auto">
